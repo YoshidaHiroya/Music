@@ -46,9 +46,38 @@ class ViewController: UIViewController {
         }
         }
     
+    let backmusicPath = Bundle.main.bundleURL.appendingPathComponent("backmusic.mp3")
+    //シンバル用のプレイヤーインスタンスを生成
+    var backmusicPlayer = AVAudioPlayer()
+    
+    
+    
+    @IBAction func play(_ sender: Any) {
+        do{
+            backmusicPlayer = try AVAudioPlayer(contentsOf: backmusicPath,fileTypeHint: nil)
+            backmusicPlayer.numberOfLoops = 2
+            backmusicPlayer.play()
+        }catch{
+            print("エラーが発生しました。")
+    }
+    
     
     
 }
     
-
+    
+    
+    
+    
+    @IBAction func stop(_ sender: Any) {
+    
+    backmusicPlayer.stop()
+    
+    
+    }
+    
+    
+    
+    
+}
 
